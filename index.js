@@ -35,6 +35,27 @@ function writePost(){
   });
 }
 
+// 글수정 기능
+function updatePost() {
+  rl.question('수정할 게시물의 ID를 입력하세요.: ', (id) => {
+    const postIndex = posts.findIndex(post => post.id === parseInt(id));
+    if(postIndex !== -1) {
+      rl.question('새로운 재목을 입력하세요.: ', (title) => {
+        rl.question('새로운 내용을 입력하세요.: ', (content) => {
+          posts[postIndex].title = title;
+          posts[postIndex].content = content;
+          console.log("수정이 완료되었습니다.");
+          displayMenu();
+        })
+      });
+    }
+  });
+}
+
+//검색 기능
+
+//삭제 기능
+
 // 메뉴 표시 함수
 function displayMenu() {
   console.log("");
