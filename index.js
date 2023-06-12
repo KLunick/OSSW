@@ -23,39 +23,52 @@ function displayPosts() {
   displayMenu();
 }
 
+// 글쓰기 기능
+function writePost(){
+  rl.question('제목을 입력하세요.: ', (title) => {
+    rl.question('내용을 입력하세요.: ', (content) => {
+      const newPost = {id: posts.length + 1, title, content};
+      posts.push(newPost);
+      console.log("게시물이 작성되었습니다.");
+      displayMenu();
+    });
+  });
+}
+
 // 메뉴 표시 함수
 function displayMenu() {
   console.log("");
   console.log("===== 게시판 메뉴 =====");
-  console.log("1. 글쓰기");
-  console.log("2. 글수정");
-  console.log("3. 검색");
-  console.log("4. 삭제");
-  console.log("5. 글 목록 보기");
+  console.log("1. 글 목록 보기");
+  console.log("2. 글쓰기");
+  console.log("3. 글수정");
+  console.log("4. 검색");
+  console.log("5. 삭제");
   console.log("0. 종료");
 
   rl.question('메뉴를 선택하세요: ', (choice) => {
     switch (choice) {
       case '1':
         console.log("");
-        writePost();
+        displayPosts();
         break;
       case '2':
         console.log("");
-        updatePost();
+        writePost();
         break;
-      case '3':
+/*      case '3':
         console.log("");
-        searchPost();
+        updatePost();
+        updatePost();
         break;
       case '4':
         console.log("");
-        deletePost();
+        updatePost();
         break;
       case '5':
         console.log("");
-        displayPosts();
-        break;
+        deletePost();
+        break;*/
       case '0':
         rl.close();
         break;
