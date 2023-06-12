@@ -53,6 +53,16 @@ function updatePost() {
 }
 
 //검색 기능
+function searchPost() {
+  rl.question('검색할 키워드를 입력하세요: ', (keyword) => {
+    const searchResults = posts.filter(post => {
+      return post.title.includes(keyword) || post.content.includes(keyword);
+    });
+    console.log("검색 결과:");
+    console.log(searchResults);
+    displayMenu();
+  });
+}
 
 //삭제 기능
 
