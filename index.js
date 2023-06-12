@@ -55,6 +55,19 @@ function updatePost() {
 //검색 기능
 
 //삭제 기능
+function deletePost() {
+  rl.question('삭제할 게시물의 ID를 입력하세요.: ', (id) => {
+    const postIndex = posts.findIndex(post => post.id === parseInt(id));
+    if (postInddex !== -1) {
+      posts.splice(postIndex, 1);
+      console.log('게시물이 삭제되었습니다.');
+      displayMenu();
+    } else {
+      console.log('해당 ID의 게시물을 찾을 수 없습니다.');
+      displayMenu();
+    }
+  });
+}
 
 // 메뉴 표시 함수
 function displayMenu() {
